@@ -1,0 +1,73 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=929
+
+" What:   timelog.vim:  Vim {,ft}plugin for keeping track of one's time.
+" Usage:  source the file, or stick it in your ftplugin directory and
+"         have ft=timelog on your modeline.
+"         Keys:  n new job
+"                t go
+"                q stop 
+"                s[1-9] sort by that column
+
+What is it?
+===========
+
+A simple time tracking utility.
+
+Why?
+====
+
+I tried karm and gtt and didn't like them.  I find it useful - someone
+else might too.
+
+Installation
+============
+
+Drop it in ~/vim/ftplugin/.  When you open a file with the modline telling
+vim that the filetype is "timelog":
+
+" vim:ft=timelog:
+
+it'll be sourced.  I personally have an alias to check out (RCS) my
+timelog file, open it with vim and check it back in when I'm finished.
+
+Usage
+=====
+
+
+Keys:
+   n new job
+   t start timing highlighted job (or job with the cursor on it)
+   q stop timing
+   s[1-9] sort by that column
+
+
+Here's an example of what mine could look like:
+
+" vim:ft=timelog:
+" usage:
+"   t go
+"   q stop
+"   n new job
+"   s[1-9] sort by that column
+" dates in yy-mm-dd time in hh:mm:ss
+start     last      time      what?
+--------  --------  --------  -------
+03-11-03  03-11-03  00:10:23  O  ----    Write doc for timelog.vim 
+02-11-19  03-10-19  05:19:02  C  0712    something
+02-11-19  02-11-19  00:14:41  C  0977    something else
+03-11-03  03-11-03  00:00:00  N  ----    blah
+
+The first 3 columns are what timelog.vim give you - when the job was
+created, when it was last modified and time spent on it.  The rest can be
+whatever you like.  For me here I have a tag for whether the job is New,
+Open or Completed (N, O, C), a reference nuber for the job if I have one
+and a description.
+
+There can be several timlog blocks seperated by white space and can have
+text between.  Each timelog block can be sorted seperately.
+
+Bugs?
+=====
+
+Well, the seconds aren't quite seconds and not all motions highlight the
+line the cursor ends up on.
